@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Coffee — Future Café (Compact Experience)</title>
+<meta name="description" content="Futuristic AI coffee experience: immersive landing, voice mood detection, conversational ordering, flavor DNA wheel, AR preview (camera overlay)." />
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap" role="main" aria-live="polite">
+    <header>
+      <div class="brand">
+        <div class="logo">DG</div>
+        <div>
+          <h1>Dev Godwin — AI Coffee Experience</h1>
+          <div class="sub">Futuristic site — immersive, personalized, and extensible</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn ghost" id="nameBtn">Set name</button>
+        <button class="btn primary" id="arBtn">AR Preview</button>
+        <button class="btn ghost" id="soundToggle">Ambient: off</button>
+      </div>
+    </header>
+
+    <!-- LEFT: hero, flavor wheel, projects -->
+    <section>
+      <div class="hero" aria-hidden="false">
+        <div class="beans" id="beansLayer" aria-hidden="true"></div>
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="greeting" id="greeting">Welcome — artisan of interfaces</div>
+            <div class="hero-blurb">An experience that senses preferences, suggests brews, and previews them in your space.</div>
+            <div class="chips" style="pointer-events:auto">
+              <div class="chip">React • JS • Web Audio</div>
+              <div class="chip">WebXR (stub)</div>
+              <div class="chip">Privacy-first</div>
+            </div>
+
+            <div style="margin-top:14px;display:flex;gap:10px">
+              <button class="btn primary" id="orderBtn">Start Conversational Order</button>
+              <button class="btn ghost" id="predictBtn">Check Refill</button>
+            </div>
+
+            <div style="margin-top:12px" class="small">Tip: click the mic in the assistant panel and say your mood (e.g., "I feel tired and need focus").</div>
+          </div>
+
+          <div class="panel-right">
+            <div class="wheel-wrap">
+              <div class="wheel" id="wheel" role="img" aria-label="Coffee flavor compass">
+                <div class="center" id="wheelCenter">Flavor DNA</div>
+              </div>
+              <div class="wheel-legend" id="wheelLegend">
+                <div class="small">Floral</div><div class="small">Chocolate</div><div class="small">Fruity</div><div class="small">Earthy</div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;padding:10px;border-radius:10px;border:1px solid var(--glass);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)">
+              <div style="font-weight:700">Provenance (demo)</div>
+              <div class="meta" id="provenance">Lot: 2049-XY • Farm: Demo Heights • Process: Washed • Sustainability: Fair</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <!-- <div style="border-radius:12px;padding:12px;border:1px solid var(--glass);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)">
+          <div style="font-weight:700">Selected Projects</div>
+          <div class="small" style="margin-top:8px;color:var(--muted)">Classroom Polling • AI Quiz Game • Cyber Escape Room • Author Portfolio</div>
+        </div> -->
+        <div style="border-radius:12px;padding:12px;border:1px solid var(--glass);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)">
+          <div style="font-weight:700">Predictive Refill</div>
+          <div class="small" id="refillHint">No orders yet — make your first order to enable refill predictions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: assistant -->
+    <aside>
+      <div class="assistant" role="region" aria-label="AI Assistant">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div style="width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021018">AI</div>
+          <div>
+            <div style="font-weight:700">Ambient Assistant</div>
+            <div class="meta">Conversational ordering • voice mood detection • local-first</div>
+          </div>
+        </div>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+
+        <div class="input-row" style="margin-top:12px">
+          <input id="chatInput" type="text" placeholder="Type: 'I want something smooth and strong'">
+          <button class="btn primary" id="sendBtn">Send</button>
+          <button class="mic" id="micBtn" title="Speak">🎙️</button>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn ghost" id="suggestBtn">Suggest a brew</button>
+          <button class="btn ghost" id="recipeBtn">Brew recipe</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="ar-modal" id="arModal" aria-hidden="true">
+      <div class="ar-content" role="dialog" aria-label="AR Preview">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--glass)">
+          <div style="font-weight:700">AR Preview — Camera overlay</div>
+          <div style="display:flex;gap:8px">
+            <button class="btn ghost" id="capture">Capture</button>
+            <button class="btn ghost" id="closeAr">Close</button>
+          </div>
+        </div>
+        <div class="cam-view" id="camView">
+          <div class="virtual-cup" id="virtualCup">☕</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>© Dev Godwin — Prototype experience • Camera & mic used locally only on request.</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
